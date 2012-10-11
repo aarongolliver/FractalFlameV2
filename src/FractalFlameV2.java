@@ -121,8 +121,8 @@ public final class FractalFlameV2 extends PApplet{
 		for (int y = 0; y<GLB.shei; y++) {
 			for (int x = 0; x<GLB.swid; x++) {
 				double a_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] / (GLB.ss * GLB.ss);
-
-				if(a_avg >= 1){
+				a_avg = (a_avg != 0 && a_avg <= 1.0) ? 1 : a_avg;
+				if(a_avg != 0){
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
 					final double b_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] / (GLB.ss * GLB.ss);

@@ -26,12 +26,12 @@ public final class FractalThread extends Thread{
 			
 			if(GLB.enableVariations){
 				Vec2D vSum = new Vec2D(0, 0);
-				//vSum = Vec2D.add(Vec2D.mul(v0(pAffined), GLB.vWeight[0]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v1(pAffined), GLB.vWeight[0]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v0(pAffined), GLB.vWeight[0]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v1(pAffined), GLB.vWeight[1]), vSum);
 				//vSum = Vec2D.add(Vec2D.mul(v2(pAffined), GLB.vWeight[1]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v5(pAffined), GLB.vWeight[0]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v5(pAffined), GLB.vWeight[5]), vSum);
 				//vSum = Vec2D.mul(Vec2D.add(vSum, v5(pAffined)), GLB.vWeight[3]);
-				vSum = Vec2D.add(Vec2D.mul(v6(pAffined), GLB.vWeight[4]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v6(pAffined), GLB.vWeight[6]), vSum);
 				
 
 				p = new Vec2D(vSum);

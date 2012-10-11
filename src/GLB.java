@@ -32,7 +32,7 @@ final class GLB {
 	
 	// Thread settings
 	public static       int nThreads   = 1;
-	public static final int maxThreads = Runtime.getRuntime().availableProcessors();
+	public static final int maxThreads = Runtime.getRuntime().availableProcessors()-4;
 	
 	public static       boolean threadStopSignal = true;
 	
@@ -57,7 +57,7 @@ final class GLB {
 	public static       int[] aProbability = new int[100];
 	
 	// variation settings
-	public static final int nVariations = 5;
+	public static final int nVariations = 10;
 	public static final double[] vWeight = new double[nVariations];
 	public static       boolean enableVariations = true;
 	
