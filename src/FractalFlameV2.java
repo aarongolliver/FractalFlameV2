@@ -2,11 +2,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import processing.core.PApplet;
 
-public final class FractalFlameV2 extends PApplet
-{
-	ThreadLocalRandom	r	= ThreadLocalRandom.current();
+public final class FractalFlameV2 extends PApplet {
+	ThreadLocalRandom	r		= ThreadLocalRandom.current();
 	
-	int	              iters	= 0;
+	int					iters	= 0;
 	
 	public static final void main(final String args[]) {
 		System.out.println(java.lang.Runtime.getRuntime().maxMemory());

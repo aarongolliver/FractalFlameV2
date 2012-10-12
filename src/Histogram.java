@@ -1,5 +1,4 @@
-public final class Histogram
-{
+public final class Histogram {
 	double[]	histo;
 	
 	public Histogram() {

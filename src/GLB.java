@@ -1,68 +1,68 @@
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-final class GLB
-{
-	private static final ThreadLocalRandom	r	                    = ThreadLocalRandom.current();
+final class GLB {
+	private static final ThreadLocalRandom	r							= ThreadLocalRandom.current();
 	// Window settings
-	public static final int	               ssMAX	                = 10;
-	public static final int	               ssMIN	                = 1;
-	public static int	                   ss	                    = ssMIN;
-	public static final int	               swid	                    = 1920;
-	public static final int	               shei	                    = 1080;
-	public static final int	               bgcolor	                = 0xFF000000;
+	public static final int					ssMAX						= 10;
+	public static final int					ssMIN						= 1;
+	public static int						ss							= ssMIN;
+	public static final int					swid						= 1920;
+	public static final int					shei						= 1080;
+	public static final int					bgcolor						= 0xFF000000;
 	
-	public static String	               uFlameID;
+	public static String					uFlameID;
 	
-	public static final double[]	       image	                = new double[swid * shei * 4];
+	public static final double[]			image						= new double[swid * shei * 4];
 	
 	// Histogram settings
-	public static int	                   hwid	                    = swid * ss;
-	public static int	                   hhei	                    = shei * ss;
+	public static int						hwid						= swid * ss;
+	public static int						hhei						= shei * ss;
 	
-	public static Histogram	               h;	                                                                         // =
-	                                                                                                                     // createHistogram();
-	                                                                                                                     
+	public static Histogram					h;																// =
+																											// createHistogram();
+																											
 	// camera settings
-	public static final double	           cameraXShrinkDEFAULT	    = 30;
-	public static final double	           cameraYShrinkDEFAULT	    = 30;
-	public static double	               cameraXShrink	        = cameraXShrinkDEFAULT;
-	public static double	               cameraYShrink	        = cameraYShrinkDEFAULT;
-	public static double	               cameraXOffset	        = 0.5;
-	public static double	               cameraYOffset	        = 0.5;
+	public static final double				cameraXShrinkDEFAULT		= 30;
+	public static final double				cameraYShrinkDEFAULT		= 30;
+	public static double					cameraXShrink				= cameraXShrinkDEFAULT;
+	public static double					cameraYShrink				= cameraYShrinkDEFAULT;
+	public static double					cameraXOffset				= 0.5;
+	public static double					cameraYOffset				= 0.5;
 	
 	// Thread settings
-	public static int	                   nThreads	                = 1;
-	public static final int	               maxThreads	            = (Runtime.getRuntime().availableProcessors() > 2) ? Runtime
-	                                                                        .getRuntime().availableProcessors() - 2 : 1;
+	public static int						nThreads					= 1;
+	public static final int					maxThreads					= (Runtime.getRuntime().availableProcessors() > 2) ? Runtime
+																				.getRuntime().availableProcessors() - 2
+																				: 1;
 	
-	public static boolean	               threadStopSignal	        = true;
+	public static boolean					threadStopSignal			= true;
 	
-	public static FractalThread[]	       threads;
+	public static FractalThread[]			threads;
 	
 	// image settings
-	public static final double	           gammaMIN	                = 1;
-	public static final double	           gammaMAX	                = 2.21;
-	public static double	               gamma	                = gammaMAX;
+	public static final double				gammaMIN					= 1;
+	public static final double				gammaMAX					= 2.21;
+	public static double					gamma						= gammaMAX;
 	
 	// affine matrix settings
-	private static final int	           maxAffineTransformations	= 5;
-	private static final int	           minAffineTransformations	= 3;
-	public static int	                   nAffineTransformations	= r.nextInt(minAffineTransformations,
-	                                                                        maxAffineTransformations);
-	public static ColorSet[]	           affineColor;
+	private static final int				maxAffineTransformations	= 5;
+	private static final int				minAffineTransformations	= 3;
+	public static int						nAffineTransformations		= r.nextInt(minAffineTransformations,
+																				maxAffineTransformations);
+	public static ColorSet[]				affineColor;
 	
 	// global referance to the affine transformation arrays
 	// the use is a[j] = affineTransformation[][]
-	public static double[][][]	           a;
+	public static double[][][]				a;
 	
 	// probability of each matrix being chosen
-	public static int[]	                   aProbability	            = new int[100];
+	public static int[]						aProbability				= new int[100];
 	
 	// variation settings
-	public static final int	               nVariations	            = 10;
-	public static final double[]	       vWeight	                = new double[nVariations];
-	public static boolean	               enableVariations	        = true;
+	public static final int					nVariations					= 10;
+	public static final double[]			vWeight						= new double[nVariations];
+	public static boolean					enableVariations			= true;
 	
 	public static final void resetAffineTransformations() {
 		uFlameID = "images/" + r.nextInt(100000, 999999);
@@ -106,7 +106,7 @@ final class GLB
 		
 		for (int i = 0; i < affineColor.length; i++) {
 			affineColor[i] = new ColorSet(ThreadLocalRandom.current().nextDouble(1), ThreadLocalRandom.current()
-			        .nextDouble(1), ThreadLocalRandom.current().nextDouble(1));
+					.nextDouble(1), ThreadLocalRandom.current().nextDouble(1));
 			
 		}
 	}

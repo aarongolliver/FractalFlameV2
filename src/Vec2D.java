@@ -1,5 +1,4 @@
-public final class Vec2D
-{
+public final class Vec2D {
 	public final double	x, y;
 	
 	public Vec2D(final double x, final double y) {

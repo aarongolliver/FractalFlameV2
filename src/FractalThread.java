@@ -1,10 +1,10 @@
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class FractalThread extends Thread
-{
+public final class FractalThread extends Thread {
+	
 	final ThreadLocalRandom	r	= ThreadLocalRandom.current();
 	
-	private Vec2D	        p	= new Vec2D(r.nextDouble(-1, 1), r.nextDouble(-1, 1));
+	private Vec2D			p	= new Vec2D(r.nextDouble(-1, 1), r.nextDouble(-1, 1));
 	private final ColorSet	col	= new ColorSet(0);
 	
 	public final void run() {

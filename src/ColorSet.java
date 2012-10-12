@@ -3,8 +3,7 @@
  * 
  * @author gollivam. Created Sep 10, 2012.
  */
-public final class ColorSet
-{
+public final class ColorSet {
 	double	r, g, b;
 	
 	public ColorSet(final double r, final double g, final double b) {
