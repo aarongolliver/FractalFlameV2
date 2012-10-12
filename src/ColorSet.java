@@ -1,28 +1,27 @@
-
 /**
  * TODO Put here a description of what this class does.
- *
- * @author gollivam.
- *         Created Sep 10, 2012.
+ * 
+ * @author gollivam. Created Sep 10, 2012.
  */
-public final class ColorSet {
-	double r, g, b;
+public final class ColorSet
+{
+	double	r, g, b;
 	
-	public ColorSet(double r, double g, double b){
+	public ColorSet(double r, double g, double b) {
 		this.r = r;
 		this.g = g;
 		this.b = b;
 	}
 	
-	public ColorSet(double c){
+	public ColorSet(double c) {
 		this(c, c, c);
 	}
 	
-	public void hit(ColorSet c){
+	public void hit(ColorSet c) {
 		hit(c.r, c.b, c.g);
 	}
 	
-	public final void hit(double r, double g, double b){
+	public final void hit(double r, double g, double b) {
 		this.r += r;
 		this.r /= 2.0;
 		
@@ -33,7 +32,7 @@ public final class ColorSet {
 		this.b /= 2.0;
 	}
 	
-	public final String toString(){
+	public final String toString() {
 		return "(" + r + "," + g + "," + b + ")";
 		
 	}
