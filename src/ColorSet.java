@@ -7,21 +7,21 @@ public final class ColorSet
 {
 	double	r, g, b;
 	
-	public ColorSet(double r, double g, double b) {
+	public ColorSet(final double r, final double g, final double b) {
 		this.r = r;
 		this.g = g;
 		this.b = b;
 	}
 	
-	public ColorSet(double c) {
+	public ColorSet(final double c) {
 		this(c, c, c);
 	}
 	
-	public void hit(ColorSet c) {
+	public void hit(final ColorSet c) {
 		hit(c.r, c.b, c.g);
 	}
 	
-	public final void hit(double r, double g, double b) {
+	public final void hit(final double r, final double g, final double b) {
 		this.r += r;
 		this.r /= 2.0;
 		

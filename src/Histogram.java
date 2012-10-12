@@ -9,11 +9,11 @@ public final class Histogram
 		}
 	}
 	
-	public void hit(Vec2D p, ColorSet c) {
-		final int x = (int) ((p.x + GLB.cameraXOffset) * GLB.hwid / GLB.cameraXShrink + GLB.hwid / 2);
-		final int y = (int) ((p.y + GLB.cameraYOffset) * GLB.hhei / GLB.cameraYShrink + GLB.hhei / 2);
+	public void hit(final Vec2D p, final ColorSet c) {
+		final int x = (int) (((p.x + GLB.cameraXOffset) * (GLB.hwid / GLB.cameraXShrink)) + (GLB.hwid / 2));
+		final int y = (int) (((p.y + GLB.cameraYOffset) * (GLB.hhei / GLB.cameraYShrink)) + (GLB.hhei / 2));
 		
-		if (x < 0 || x >= GLB.hwid || y < 0 || y >= GLB.hhei)
+		if ((x < 0) || (x >= GLB.hwid) || (y < 0) || (y >= GLB.hhei))
 			return;
 		
 		histo[(4 * x) + (4 * y * GLB.hwid) + 0] += c.r;

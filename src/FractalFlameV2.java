@@ -1,7 +1,6 @@
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
-import processing.core.*;
+import processing.core.PApplet;
 
 public final class FractalFlameV2 extends PApplet
 {
@@ -9,7 +8,7 @@ public final class FractalFlameV2 extends PApplet
 	
 	int	              iters	= 0;
 	
-	public static final void main(String args[]) {
+	public static final void main(final String args[]) {
 		System.out.println(java.lang.Runtime.getRuntime().maxMemory());
 		PApplet.main(new String[] { "--present", "FractalFlameV2" });
 	}
@@ -24,19 +23,19 @@ public final class FractalFlameV2 extends PApplet
 	}
 	
 	public final void keyPressed() {
-		if (key == 'r' || key == 'R') {
+		if ((key == 'r') || (key == 'R')) {
 			GLB.reset();
 			return;
 		}
 		
-		if (key == 'f' || key == 'F') {
+		if ((key == 'f') || (key == 'F')) {
 			GLB.enableVariations = !GLB.enableVariations;
 			GLB.resetHistogram();
 		}
 		
 		GLB.stopThreads();
 		
-		if (key == 'h' || key == 'H') {
+		if ((key == 'h') || (key == 'H')) {
 			GLB.ss = GLB.ss != GLB.ssMAX ? GLB.ssMAX : GLB.ssMIN;
 			GLB.hwid = GLB.swid * GLB.ss;
 			GLB.hhei = GLB.shei * GLB.ss;
@@ -44,26 +43,26 @@ public final class FractalFlameV2 extends PApplet
 			GLB.resetHistogram();
 		}
 		
-		if (key == 'c' || key == 'C') {
+		if ((key == 'c') || (key == 'C')) {
 			GLB.resetAffineColorMap();
 			GLB.resetHistogram();
 		}
 		
-		if (key == 'g' || key == 'G') {
+		if ((key == 'g') || (key == 'G')) {
 			GLB.resetGamma();
 		}
 		
-		if (key == 't' || key == 'T') {
+		if ((key == 't') || (key == 'T')) {
 			GLB.nThreads = (GLB.nThreads == GLB.maxThreads) ? 1 : GLB.maxThreads;
 		}
 		
-		if (key == '-' || key == '_') {
+		if ((key == '-') || (key == '_')) {
 			GLB.cameraXShrink *= 1.01;
 			GLB.cameraYShrink *= 1.01;
 			GLB.resetHistogram();
 		}
 		
-		if (key == '+' || key == '=') {
+		if ((key == '+') || (key == '=')) {
 			GLB.cameraXShrink *= .99;
 			GLB.cameraYShrink *= .99;
 			GLB.resetHistogram();
@@ -92,8 +91,9 @@ public final class FractalFlameV2 extends PApplet
 	}
 	
 	public final void draw() {
-		if (frameCount <= 5)
+		if (frameCount <= 5) {
 			loadPixels();
+		}
 		
 		double maxA = 0;
 		
@@ -125,7 +125,7 @@ public final class FractalFlameV2 extends PApplet
 		for (int y = 0; y < GLB.shei; y++) {
 			for (int x = 0; x < GLB.swid; x++) {
 				double a_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] / (GLB.ss * GLB.ss);
-				a_avg = (a_avg != 0 && a_avg <= 1.0) ? 1 : a_avg;
+				a_avg = ((a_avg != 0) && (a_avg <= 1.0)) ? 1 : a_avg;
 				if (a_avg != 0) {
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
@@ -140,9 +140,9 @@ public final class FractalFlameV2 extends PApplet
 					final int g = (int) ((g_avg * color_scale_factor) * 0xFF);
 					final int b = (int) ((b_avg * color_scale_factor) * 0xFF);
 					
-					pixels[x + y * GLB.swid] = a << 24 | r << 16 | g << 8 | b << 0;
+					pixels[x + (y * GLB.swid)] = (a << 24) | (r << 16) | (g << 8) | (b << 0);
 				} else {
-					pixels[x + y * GLB.swid] = 0xFF << 24;
+					pixels[x + (y * GLB.swid)] = 0xFF << 24;
 				}
 				GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] = 0;
 				GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] = 0;
@@ -152,7 +152,7 @@ public final class FractalFlameV2 extends PApplet
 		}
 		
 		updatePixels();
-		if (frameCount % 3 == 0 && GLB.ss == GLB.ssMAX) {
+		if (((frameCount % 3) == 0) && (GLB.ss == GLB.ssMAX)) {
 			saveFrame(GLB.uFlameID + ".bmp");
 		}
 	}

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,9 +20,9 @@ final class GLB
 	public static int	                   hwid	                    = swid * ss;
 	public static int	                   hhei	                    = shei * ss;
 	
-	public static Histogram	               h;	                                                                                     // =
-	                                                                                                                                 // createHistogram();
-	                                                                                                                                 
+	public static Histogram	               h;	                                                                      // =
+	                                                                                                                  // createHistogram();
+	                                                                                                                  
 	// camera settings
 	public static final double	           cameraXShrinkDEFAULT	    = 30;
 	public static final double	           cameraYShrinkDEFAULT	    = 30;
@@ -48,7 +47,8 @@ final class GLB
 	// affine matrix settings
 	private static final int	           maxAffineTransformations	= 5;
 	private static final int	           minAffineTransformations	= 3;
-	public static int	                   nAffineTransformations	= r.nextInt(minAffineTransformations, maxAffineTransformations);
+	public static int	                   nAffineTransformations	= r.nextInt(minAffineTransformations,
+	                                                                        maxAffineTransformations);
 	public static ColorSet[]	           affineColor;
 	
 	// global referance to the affine transformation arrays
@@ -88,7 +88,7 @@ final class GLB
 		Arrays.sort(aProbs);
 		int last = 0;
 		for (int i = 0; i < aProbs.length; i++) {
-			for (int j = last; j < aProbs[i] * aProbability.length; j++) {
+			for (int j = last; j < (aProbs[i] * aProbability.length); j++) {
 				aProbability[j] = i;
 				last = j;
 			}
@@ -104,7 +104,8 @@ final class GLB
 		affineColor = new ColorSet[nAffineTransformations];
 		
 		for (int i = 0; i < affineColor.length; i++) {
-			affineColor[i] = new ColorSet(ThreadLocalRandom.current().nextDouble(1), ThreadLocalRandom.current().nextDouble(1), ThreadLocalRandom.current().nextDouble(1));
+			affineColor[i] = new ColorSet(ThreadLocalRandom.current().nextDouble(1), ThreadLocalRandom.current()
+			        .nextDouble(1), ThreadLocalRandom.current().nextDouble(1));
 			
 		}
 	}
@@ -140,10 +141,10 @@ final class GLB
 	public static final void stopThreads() {
 		GLB.threadStopSignal = true;
 		if (GLB.threads != null) {
-			for (FractalThread t : GLB.threads) {
+			for (final FractalThread t : GLB.threads) {
 				try {
 					t.join();
-				} catch (Exception exception) {
+				} catch (final Exception exception) {
 				}
 			}
 		}

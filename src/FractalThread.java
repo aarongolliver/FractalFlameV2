@@ -11,9 +11,8 @@ public final class FractalThread extends Thread
 		System.out.println("Creating thread");
 		
 		while (true) {
-			if (GLB.threadStopSignal == true) {
+			if (GLB.threadStopSignal == true)
 				return;
-			}
 			
 			int j = r.nextInt(0, GLB.aProbability.length);
 			j = GLB.aProbability[j];
@@ -39,76 +38,76 @@ public final class FractalThread extends Thread
 		}
 	}
 	
-	private final Vec2D affine(Vec2D p, double[][] a) {
+	private final Vec2D affine(final Vec2D p, final double[][] a) {
 		
-		double x = (p.x * a[0][0]) + (p.y * a[0][1]) + (a[0][2]);
-		double y = (p.x * a[1][0]) + (p.y * a[1][1]) + (a[1][2]);
+		final double x = (p.x * a[0][0]) + (p.y * a[0][1]) + (a[0][2]);
+		final double y = (p.x * a[1][0]) + (p.y * a[1][1]) + (a[1][2]);
 		
 		return new Vec2D(x, y);
 	}
 	
-	private final Vec2D v0(Vec2D p) {
+	private final Vec2D v0(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
 		return new Vec2D(x, y);
 	}
 	
-	private final Vec2D v1(Vec2D p) {
+	private final Vec2D v1(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
 		return new Vec2D(Math.cos(x), Math.sin(y));
 	}
 	
-	private final Vec2D v2(Vec2D p) {
+	private final Vec2D v2(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		return new Vec2D(y / rsq, x / rsq);
 	}
 	
-	private final Vec2D v3(Vec2D p) {
+	private final Vec2D v3(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		final double r = Math.sqrt(rsq);
-		return new Vec2D(x * Math.sin(rsq) - y * Math.cos(rsq), x * Math.cos(rsq) + y * Math.sin(rsq));
+		return new Vec2D((x * Math.sin(rsq)) - (y * Math.cos(rsq)), (x * Math.cos(rsq)) + (y * Math.sin(rsq)));
 	}
 	
-	private final Vec2D v4(Vec2D p) {
+	private final Vec2D v4(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		final double r = Math.sqrt(rsq);
-		return new Vec2D(1 / r * (x - y) * (x + y), 2 * x * y);
+		return new Vec2D((1 / r) * (x - y) * (x + y), 2 * x * y);
 	}
 	
-	private final Vec2D v5(Vec2D p) {
+	private final Vec2D v5(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		final double r = Math.sqrt(rsq);
 		final double theta = Math.atan(x / y);
 		return new Vec2D(theta / Math.PI, r - 1);
 	}
 	
-	private final Vec2D v6(Vec2D p) {
+	private final Vec2D v6(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		final double r = Math.sqrt(rsq);
 		final double theta = Math.atan(x / y);
 		return new Vec2D(r * Math.sin(theta + r), r * Math.cos(theta - r));
 	}
 	
-	private final Vec2D v13(Vec2D p) {
+	private final Vec2D v13(final Vec2D p) {
 		final double x = p.x;
 		final double y = p.y;
-		final double rsq = (x * x + y * y);
+		final double rsq = ((x * x) + (y * y));
 		final double r = Math.sqrt(rsq);
 		final double theta = Math.atan(x / y);
 		final double omega = (this.r.nextDouble() > .5) ? 0 : Math.PI;
 		
-		return new Vec2D(Math.sqrt(r) * Math.sin(theta / 2 + omega), Math.sqrt(r) * Math.cos(theta / 2 + omega));
+		return new Vec2D(Math.sqrt(r) * Math.sin((theta / 2) + omega), Math.sqrt(r) * Math.cos((theta / 2) + omega));
 	}
 	
 }
