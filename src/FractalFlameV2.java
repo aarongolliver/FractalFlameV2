@@ -23,12 +23,12 @@ public final class FractalFlameV2 extends PApplet{
 	}
 	
 	public final void keyPressed(){
-		if(key == 'r'){
+		if(key == 'r' || key == 'R'){
 			GLB.reset();
 			return;
 		}
 		
-		if(key == 'f'){
+		if(key == 'f' || key == 'F'){
 			GLB.enableVariations = !GLB.enableVariations;
 			GLB.resetHistogram();
 		}
@@ -36,7 +36,7 @@ public final class FractalFlameV2 extends PApplet{
 		GLB.stopThreads();
 		
 
-		if(key == 'h'){
+		if(key == 'h' || key == 'H'){
 			GLB.ss = GLB.ss != GLB.ssMAX ? GLB.ssMAX : GLB.ssMIN;
 			GLB.hwid = GLB.swid * GLB.ss;
 			GLB.hhei = GLB.shei * GLB.ss;
@@ -44,7 +44,7 @@ public final class FractalFlameV2 extends PApplet{
 			GLB.resetHistogram();
 		}
 		
-		if(key == 'c'){
+		if(key == 'c' || key == 'C'){
 			GLB.resetAffineColorMap();
 			GLB.resetHistogram();
 		}
@@ -53,7 +53,7 @@ public final class FractalFlameV2 extends PApplet{
 			GLB.resetGamma();
 		}
 		
-		if(key == 't'){
+		if(key == 't' || key == 'T'){
 			GLB.nThreads = (GLB.nThreads == GLB.maxThreads)  ? 1 : GLB.maxThreads;
 		}
 		
