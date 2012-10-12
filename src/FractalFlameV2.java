@@ -49,6 +49,10 @@ public final class FractalFlameV2 extends PApplet{
 			GLB.resetHistogram();
 		}
 		
+		if(key == 'g' || key == 'G'){
+			GLB.resetGamma();
+		}
+		
 		if(key == 't'){
 			GLB.nThreads = (GLB.nThreads == GLB.maxThreads)  ? 1 : GLB.maxThreads;
 		}
@@ -113,9 +117,18 @@ public final class FractalFlameV2 extends PApplet{
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 1] += g;
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 2] += b;
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 3] += a;
+				//maxA = (maxA >= a) ? maxA : a;
+			}
+		}
+
+		for (int y = 0; y<GLB.shei; y++) {
+			for (int x = 0; x<GLB.swid; x++) {
+				final double a = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3];
 				maxA = (maxA >= a) ? maxA : a;
 			}
 		}
+		maxA /= (GLB.ss * GLB.ss);
+		
 		
 		final double logMaxA = Math.log10(maxA);
 		for (int y = 0; y<GLB.shei; y++) {
@@ -148,8 +161,8 @@ public final class FractalFlameV2 extends PApplet{
 		}
 
 		updatePixels();
-		if(frameCount % 3 == 0){
-			//saveFrame(GLB.uFlameID + ".bmp");
+		if(frameCount % 3 == 0 && GLB.ss == GLB.ssMAX){
+			saveFrame(GLB.uFlameID + ".bmp");
 		}
 	}
 }

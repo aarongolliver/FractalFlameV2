@@ -39,7 +39,9 @@ final class GLB {
 	public static       FractalThread[] threads;
 	
 	// image settings
-	public static final double gamma = 2.21;
+	public static final double gammaMIN = 1;
+	public static final double gammaMAX = 2.21;
+	public static       double gamma = gammaMAX;
 	
 	// affine matrix settings
 	private static final int maxAffineTransformations = 5;
@@ -157,6 +159,10 @@ final class GLB {
 		resetHistogram();
 		resetCamera();
 		startThreads();
+	}
+
+	public static void resetGamma() {
+		gamma = (gamma == gammaMAX) ? gammaMIN : gammaMAX;
 	}
 	
 }
