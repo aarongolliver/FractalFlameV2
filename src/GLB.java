@@ -20,9 +20,9 @@ final class GLB
 	public static int	                   hwid	                    = swid * ss;
 	public static int	                   hhei	                    = shei * ss;
 	
-	public static Histogram	               h;	                                                                      // =
-	                                                                                                                  // createHistogram();
-	                                                                                                                  
+	public static Histogram	               h;	                                                                         // =
+	                                                                                                                     // createHistogram();
+	                                                                                                                     
 	// camera settings
 	public static final double	           cameraXShrinkDEFAULT	    = 30;
 	public static final double	           cameraYShrinkDEFAULT	    = 30;
@@ -33,7 +33,8 @@ final class GLB
 	
 	// Thread settings
 	public static int	                   nThreads	                = 1;
-	public static final int	               maxThreads	            = Runtime.getRuntime().availableProcessors() - 4;
+	public static final int	               maxThreads	            = (Runtime.getRuntime().availableProcessors() > 2) ? Runtime
+	                                                                        .getRuntime().availableProcessors() - 2 : 1;
 	
 	public static boolean	               threadStopSignal	        = true;
 	

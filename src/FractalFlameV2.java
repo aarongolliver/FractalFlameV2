@@ -113,7 +113,7 @@ public final class FractalFlameV2 extends PApplet
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 3] += a;
 				
 				// grab the alpha of the current image pixel to see if it's larger than any other pixel
-				final double imga = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3];
+				final double imga = GLB.image[(4 * px) + (4 * py * GLB.swid) + 3];
 				maxA = (maxA >= a) ? maxA : a;
 			}
 		}
@@ -130,7 +130,7 @@ public final class FractalFlameV2 extends PApplet
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
 					final double b_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] / (GLB.ss * GLB.ss);
-					double color_scale_factor = color_scale_factor = Math.log10(a_avg) / logMaxA;
+					double color_scale_factor = Math.log10(a_avg) / logMaxA;
 					if (GLB.gamma != 1) {
 						color_scale_factor = Math.pow(color_scale_factor, 1 / GLB.gamma);
 					}
