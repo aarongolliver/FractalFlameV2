@@ -4,7 +4,7 @@
  * @author gollivam. Created Sep 10, 2012.
  */
 public final class ColorSet {
-	double	r, g, b;
+	double	r = 0, g = 0, b = 0;
 	
 	public ColorSet(final double r, final double g, final double b) {
 		this.r = r;
@@ -17,7 +17,7 @@ public final class ColorSet {
 	}
 	
 	public void hit(final ColorSet c) {
-		hit(c.r, c.b, c.g);
+		hit(c.r, c.g, c.b);
 	}
 	
 	public final void hit(final double r, final double g, final double b) {
