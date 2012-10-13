@@ -68,21 +68,21 @@ public final class FractalFlameV2 extends PApplet {
 		}
 		
 		if (keyCode == UP) {
-			GLB.cameraYOffset += .01;
+			GLB.cameraYOffset += .01 * GLB.cameraYShrink;
 			GLB.resetHistogram();
 		}
 		if (keyCode == DOWN) {
-			GLB.cameraYOffset -= .01;
+			GLB.cameraYOffset -= .01 * GLB.cameraYShrink;
 			GLB.resetHistogram();
 		}
 		
 		if (keyCode == LEFT) {
-			GLB.cameraXOffset += .01;
+			GLB.cameraXOffset += .01 * GLB.cameraXShrink;
 			GLB.resetHistogram();
 		}
 		
 		if (keyCode == RIGHT) {
-			GLB.cameraXOffset -= .01;
+			GLB.cameraXOffset -= .01 * GLB.cameraXShrink;
 			GLB.resetHistogram();
 		}
 		GLB.startThreads();
@@ -123,8 +123,11 @@ public final class FractalFlameV2 extends PApplet {
 		final double logMaxA = Math.log10(maxA);
 		for (int y = 0; y < GLB.shei; y++) {
 			for (int x = 0; x < GLB.swid; x++) {
+				
 				double a_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] / (GLB.ss * GLB.ss);
+				
 				a_avg = ((a_avg != 0) && (a_avg <= 1.0)) ? 1 : a_avg;
+				
 				if (a_avg != 0) {
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);

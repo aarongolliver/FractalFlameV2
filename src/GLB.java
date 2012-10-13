@@ -23,8 +23,8 @@ final class GLB {
 																											// createHistogram();
 																											
 	// camera settings
-	public static final double				cameraXShrinkDEFAULT		= 30;
-	public static final double				cameraYShrinkDEFAULT		= 30;
+	public static final double				cameraXShrinkDEFAULT		= 60;
+	public static final double				cameraYShrinkDEFAULT		= 60;
 	public static double					cameraXShrink				= cameraXShrinkDEFAULT;
 	public static double					cameraYShrink				= cameraYShrinkDEFAULT;
 	public static double					cameraXOffset				= 0.5;
@@ -60,7 +60,7 @@ final class GLB {
 	public static int[]						aProbability				= new int[100];
 	
 	// variation settings
-	public static final int					nVariations					= 10;
+	public static final int					nVariations					= 17;
 	public static final double[]			vWeight						= new double[nVariations];
 	public static boolean					enableVariations			= true;
 	
@@ -68,7 +68,7 @@ final class GLB {
 		uFlameID = "images/" + r.nextInt(100000, 999999);
 		
 		for (int i = 0; i < vWeight.length; i++) {
-			vWeight[i] = r.nextDouble(.5, 1);
+			vWeight[i] = r.nextDouble(0, 1);
 		}
 		
 		nAffineTransformations = r.nextInt(minAffineTransformations, maxAffineTransformations);
