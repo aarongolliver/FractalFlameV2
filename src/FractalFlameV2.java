@@ -113,7 +113,7 @@ public final class FractalFlameV2 extends PApplet {
 				
 				// grab the alpha of the current image pixel to see if it's larger than any other pixel
 				final double imga = GLB.image[(4 * px) + (4 * py * GLB.swid) + 3];
-				maxA = (maxA >= a) ? maxA : a;
+				maxA = (maxA >= imga) ? maxA : imga;
 			}
 		}
 		// maxA holds the sum of each histogram-block per pixel, so we divide the sum by the number of bins per pixel
