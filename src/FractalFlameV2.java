@@ -120,7 +120,8 @@ public final class FractalFlameV2 extends PApplet {
 		// (supersamples squared) to get the average
 		maxA /= (GLB.ss * GLB.ss);
 		
-		final double logMaxA = Math.log10(maxA);
+		final double logMaxA = Math.log(maxA);
+		
 		for (int y = 0; y < GLB.shei; y++) {
 			for (int x = 0; x < GLB.swid; x++) {
 				
@@ -132,15 +133,15 @@ public final class FractalFlameV2 extends PApplet {
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
 					final double b_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] / (GLB.ss * GLB.ss);
-					double color_scale_factor = Math.log10(a_avg) / logMaxA;
+					double color_scale_factor = Math.log(a_avg) / logMaxA;
 					if (GLB.gamma != 1) {
 						color_scale_factor = Math.pow(color_scale_factor, 1 / GLB.gamma);
 					}
 					
 					final int a = 0xFF;
-					final int r = (int) ((r_avg * color_scale_factor) * 0xFF);
-					final int g = (int) ((g_avg * color_scale_factor) * 0xFF);
-					final int b = (int) ((b_avg * color_scale_factor) * 0xFF);
+					final int r = (int) ((r_avg * color_scale_factor) * 0xFF) & 0xFF;
+					final int g = (int) ((g_avg * color_scale_factor) * 0xFF) & 0xFF;
+					final int b = (int) ((b_avg * color_scale_factor) * 0xFF) & 0xFF;
 					
 					pixels[x + (y * GLB.swid)] = (a << 24) | (r << 16) | (g << 8) | (b << 0);
 				} else {
