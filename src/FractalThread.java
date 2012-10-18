@@ -23,19 +23,19 @@ public final class FractalThread extends Thread {
 				Vec2D vSum = new Vec2D(0, 0);
 				vSum = Vec2D.add(Vec2D.mul(v0(pAffined), GLB.vWeight[0]), vSum);
 				vSum = Vec2D.add(Vec2D.mul(v1(pAffined), GLB.vWeight[1]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v2(pAffined), GLB.vWeight[2]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v3(pAffined), GLB.vWeight[3]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v4(pAffined), GLB.vWeight[4]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v5(pAffined), GLB.vWeight[5]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v6(pAffined), GLB.vWeight[6]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v7(pAffined), GLB.vWeight[7]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v8(pAffined), GLB.vWeight[8]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v9(pAffined), GLB.vWeight[9]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v10(pAffined), GLB.vWeight[10]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v11(pAffined), GLB.vWeight[11]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v12(pAffined), GLB.vWeight[12]), vSum);
-//				vSum = Vec2D.add(Vec2D.mul(v13(pAffined), GLB.vWeight[13]), vSum);
-				vSum = Vec2D.add(Vec2D.mul(v16(pAffined), GLB.vWeight[16]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v2(pAffined), GLB.vWeight[2]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v3(pAffined), GLB.vWeight[3]), vSum);
+				 vSum = Vec2D.add(Vec2D.mul(v4(pAffined), GLB.vWeight[4]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v5(pAffined), GLB.vWeight[5]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v6(pAffined), GLB.vWeight[6]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v7(pAffined), GLB.vWeight[7]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v8(pAffined), GLB.vWeight[8]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v9(pAffined), GLB.vWeight[9]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v10(pAffined), GLB.vWeight[10]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v11(pAffined), GLB.vWeight[11]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v12(pAffined), GLB.vWeight[12]), vSum);
+				vSum = Vec2D.add(Vec2D.mul(v13(pAffined), GLB.vWeight[13]), vSum);
+				// vSum = Vec2D.add(Vec2D.mul(v16(pAffined), GLB.vWeight[16]), vSum);
 				
 				p = new Vec2D(vSum);
 			} else {
