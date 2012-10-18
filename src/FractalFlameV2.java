@@ -56,33 +56,33 @@ public final class FractalFlameV2 extends PApplet {
 		}
 		
 		if ((key == '-') || (key == '_')) {
-			GLB.cameraXShrink *= 1.01;
-			GLB.cameraYShrink *= 1.01;
+			GLB.cameraXShrink *= 1.05;
+			GLB.cameraYShrink *= 1.05;
 			GLB.resetHistogram();
 		}
 		
 		if ((key == '+') || (key == '=')) {
-			GLB.cameraXShrink *= .99;
-			GLB.cameraYShrink *= .99;
+			GLB.cameraXShrink *= .95;
+			GLB.cameraYShrink *= .95;
 			GLB.resetHistogram();
 		}
 		
 		if (keyCode == UP) {
-			GLB.cameraYOffset += .01 * GLB.cameraYShrink;
+			GLB.cameraYOffset += .05 * GLB.cameraYShrink;
 			GLB.resetHistogram();
 		}
 		if (keyCode == DOWN) {
-			GLB.cameraYOffset -= .01 * GLB.cameraYShrink;
+			GLB.cameraYOffset -= .05 * GLB.cameraYShrink;
 			GLB.resetHistogram();
 		}
 		
 		if (keyCode == LEFT) {
-			GLB.cameraXOffset += .01 * GLB.cameraXShrink;
+			GLB.cameraXOffset += .05 * GLB.cameraXShrink;
 			GLB.resetHistogram();
 		}
 		
 		if (keyCode == RIGHT) {
-			GLB.cameraXOffset -= .01 * GLB.cameraXShrink;
+			GLB.cameraXOffset -= .05 * GLB.cameraXShrink;
 			GLB.resetHistogram();
 		}
 		GLB.startThreads();
@@ -127,9 +127,7 @@ public final class FractalFlameV2 extends PApplet {
 				
 				double a_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] / (GLB.ss * GLB.ss);
 				
-				a_avg = ((a_avg != 0) && (a_avg <= 1.0)) ? 1 : a_avg;
-				
-				if (a_avg != 0) {
+				if (a_avg > 1) {
 					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
 					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
 					final double b_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] / (GLB.ss * GLB.ss);
@@ -138,10 +136,10 @@ public final class FractalFlameV2 extends PApplet {
 						color_scale_factor = Math.pow(color_scale_factor, 1 / GLB.gamma);
 					}
 					
-					final int a = 0xFF;
-					final int r = (int) ((r_avg * color_scale_factor) * 0xFF) & 0xFF;
-					final int g = (int) ((g_avg * color_scale_factor) * 0xFF) & 0xFF;
-					final int b = (int) ((b_avg * color_scale_factor) * 0xFF) & 0xFF;
+					final short a = 0xFF;
+					final short r = (short) ((r_avg * color_scale_factor) * 0xFF);
+					final short g = (short) ((g_avg * color_scale_factor) * 0xFF);
+					final short b = (short) ((b_avg * color_scale_factor) * 0xFF);
 					
 					pixels[x + (y * GLB.swid)] = (a << 24) | (r << 16) | (g << 8) | (b << 0);
 				} else {
