@@ -19,8 +19,7 @@ final class GLB {
 	public static int						hwid						= swid * ss;
 	public static int						hhei						= shei * ss;
 	
-	public static Histogram					h;																// =
-																											// createHistogram();
+	public static Histogram					h;
 																											
 	// camera settings
 	public static final double				cameraXShrinkDEFAULT		= 60;
