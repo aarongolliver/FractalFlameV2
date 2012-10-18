@@ -1,6 +1,9 @@
 /**
  * This class represets a set of colors associated with a point.
- * It hold red, green, and. red, green, and blue should all be between 0 and 1.
+ * 
+ * It holds the value of red, green, and blue in doubles.
+ * 
+ * red, green, and blue should all be between 0 and 1.
  * 
  * @author gollivam. Created Sep 10, 2012.
  */
@@ -37,7 +40,8 @@ public final class ColorSet {
 	}
 	
 	/**
-	 * averages the current values of the ColorSet with each input value respectivily.
+	 * averages the current values of the ColorSet with each input value
+	 * respectivily.
 	 * 
 	 * @param r
 	 *            red

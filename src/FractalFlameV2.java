@@ -111,12 +111,14 @@ public final class FractalFlameV2 extends PApplet {
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 2] += b;
 				GLB.image[(4 * px) + (4 * py * GLB.swid) + 3] += a;
 				
-				// grab the alpha of the current image pixel to see if it's larger than any other pixel
+				// grab the alpha of the current image pixel to see if it's
+				// larger than any other pixel
 				final double imga = GLB.image[(4 * px) + (4 * py * GLB.swid) + 3];
 				maxA = (maxA >= imga) ? maxA : imga;
 			}
 		}
-		// maxA holds the sum of each histogram-block per pixel, so we divide the sum by the number of bins per pixel
+		// maxA holds the sum of each histogram-block per pixel, so we divide
+		// the sum by the number of bins per pixel
 		// (supersamples squared) to get the average
 		maxA /= (GLB.ss * GLB.ss);
 		
