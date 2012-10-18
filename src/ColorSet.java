@@ -4,7 +4,7 @@
  * @author gollivam. Created Sep 10, 2012.
  */
 public final class ColorSet {
-	double	r = 0, g = 0, b = 0;
+	double	r	= 0, g = 0, b = 0;
 	
 	public ColorSet(final double r, final double g, final double b) {
 		this.r = r;
