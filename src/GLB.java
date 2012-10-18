@@ -42,11 +42,11 @@ final class GLB {
 	
 	// image settings
 	public static final double				gammaMIN					= 1;
-	public static final double				gammaMAX					= 2.21;
+	public static final double				gammaMAX					= 1.50;
 	public static double					gamma						= gammaMAX;
 	
 	// affine matrix settings
-	private static final int				maxAffineTransformations	= 5;
+	private static final int				maxAffineTransformations	= 10;
 	private static final int				minAffineTransformations	= 3;
 	public static int						nAffineTransformations		= r.nextInt(minAffineTransformations,
 																				maxAffineTransformations);
@@ -57,7 +57,7 @@ final class GLB {
 	public static double[][][]				a;
 	
 	// probability of each matrix being chosen
-	public static int[]						aProbability				= new int[100];
+	public static final int[]				aProbability				= new int[100];
 	
 	// variation settings
 	public static final int					nVariations					= 17;
