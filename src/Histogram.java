@@ -1,3 +1,23 @@
+/**
+ * I've designed this histogram to be allocated as fast as possible. It would be
+ * much easier to reason about if they histogram was a 3D array. IE:
+ * histogram[x][y][color] but when it is so large (1920x1080x4) it takes an
+ * unreasonable time to allocate the space for it. By making it a 1D array, it
+ * allocates almost instantly, and access to cells is much faster.
+ * 
+ * To get the cell in the 1D array in the same way as the 3D array, you the
+ * transformation is
+ * 
+ * histogram[x][y][color]
+ * to
+ * histogram[total_colors * (x + total_colors * y * width) + color]
+ * 
+ * so if your array is 1920x1080x4 the formula becomes
+ * f(x,y,c) = histogram[4 * (x + y *4 * 1920) + c]
+ * 
+ * @author gollivam.
+ *         Created Oct 18, 2012.
+ */
 public final class Histogram {
 	double[]	histo;
 	
