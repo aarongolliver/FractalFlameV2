@@ -7,6 +7,7 @@ final class GLB {
 	public static final int					ssMAX						= 10;
 	public static final int					ssMIN						= 1;
 	public static int						ss							= ssMIN;
+	public static int						ssSquared					= ssMIN*ssMIN;
 	public static final int					swid						= 1920;
 	public static final int					shei						= 1080;
 	public static final int					bgcolor						= 0xFF000000;
@@ -62,6 +63,7 @@ final class GLB {
 	public static final int					nVariations					= 17;
 	public static final double[]			vWeight						= new double[nVariations];
 	public static boolean					enableVariations			= true;
+
 	
 	public static final void resetAffineTransformations() {
 		uFlameID = "images/" + r.nextInt(100000, 999999);

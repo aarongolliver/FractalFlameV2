@@ -36,6 +36,7 @@ public final class FractalFlameV2 extends PApplet {
 		
 		if ((key == 'h') || (key == 'H')) {
 			GLB.ss = GLB.ss != GLB.ssMAX ? GLB.ssMAX : GLB.ssMIN;
+			GLB.ssSquared = GLB.ss * GLB.ss;
 			GLB.hwid = GLB.swid * GLB.ss;
 			GLB.hhei = GLB.shei * GLB.ss;
 			GLB.newHistogram();
@@ -97,42 +98,45 @@ public final class FractalFlameV2 extends PApplet {
 		double maxA = 0;
 		
 		for (int y = 0; y < GLB.hhei; y++) {
+			final int hy_index = y * GLB.hwid;
+			final int py = y / GLB.ss;
 			for (int x = 0; x < GLB.hwid; x++) {
 				final int px = x / GLB.ss;
-				final int py = y / GLB.ss;
 				
-				final double r = GLB.h.histo[(4 * x) + (4 * y * GLB.hwid) + 0];
-				final double g = GLB.h.histo[(4 * x) + (4 * y * GLB.hwid) + 1];
-				final double b = GLB.h.histo[(4 * x) + (4 * y * GLB.hwid) + 2];
-				final double a = GLB.h.histo[(4 * x) + (4 * y * GLB.hwid) + 3];
+				final int h_index = 4 * (x + hy_index);
+				final double r = GLB.h.histo[h_index + 0];
+				final double g = GLB.h.histo[h_index + 1];
+				final double b = GLB.h.histo[h_index + 2];
+				final double a = GLB.h.histo[h_index + 3];
 				
-				GLB.image[(4 * px) + (4 * py * GLB.swid) + 0] += r;
-				GLB.image[(4 * px) + (4 * py * GLB.swid) + 1] += g;
-				GLB.image[(4 * px) + (4 * py * GLB.swid) + 2] += b;
-				GLB.image[(4 * px) + (4 * py * GLB.swid) + 3] += a;
+				final int s_index = 4 * (px + py * GLB.swid);
+				GLB.image[s_index + 0] += r;
+				GLB.image[s_index + 1] += g;
+				GLB.image[s_index + 2] += b;
+				GLB.image[s_index + 3] += a;
 				
-				// grab the alpha of the current image pixel to see if it's
-				// larger than any other pixel
-				final double imga = GLB.image[(4 * px) + (4 * py * GLB.swid) + 3];
+				// grab the alpha of the current image pixel to see if it's larger than any other pixel
+				final double imga = GLB.image[s_index + 3];
 				maxA = (maxA >= imga) ? maxA : imga;
 			}
 		}
-		// maxA holds the sum of each histogram-block per pixel, so we divide
-		// the sum by the number of bins per pixel
+		// maxA holds the sum of each histogram-block per pixel, so we divide the sum by the number of bins per pixel
 		// (supersamples squared) to get the average
-		maxA /= (GLB.ss * GLB.ss);
+		maxA /= (GLB.ssSquared);
 		
 		final double logMaxA = Math.log(maxA);
 		
 		for (int y = 0; y < GLB.shei; y++) {
 			for (int x = 0; x < GLB.swid; x++) {
-				
-				final double a_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] / (GLB.ss * GLB.ss);
+
+				final int i_index = (x + y * GLB.swid);
+				final int s_index = 4 * i_index;
+				double a_avg = GLB.image[s_index + 3] / (GLB.ssSquared);
 				
 				if (a_avg > 1) {
-					final double r_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] / (GLB.ss * GLB.ss);
-					final double g_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] / (GLB.ss * GLB.ss);
-					final double b_avg = GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] / (GLB.ss * GLB.ss);
+					final double r_avg = GLB.image[s_index + 0] / (GLB.ssSquared);
+					final double g_avg = GLB.image[s_index + 1] / (GLB.ssSquared);
+					final double b_avg = GLB.image[s_index + 2] / (GLB.ssSquared);
 					double color_scale_factor = Math.log(a_avg) / logMaxA;
 					if (GLB.gamma != 1) {
 						color_scale_factor = Math.pow(color_scale_factor, 1 / GLB.gamma);
@@ -143,14 +147,14 @@ public final class FractalFlameV2 extends PApplet {
 					final short g = (short) ((g_avg * color_scale_factor) * 0xFF);
 					final short b = (short) ((b_avg * color_scale_factor) * 0xFF);
 					
-					pixels[x + (y * GLB.swid)] = (a << 24) | (r << 16) | (g << 8) | (b << 0);
+					pixels[i_index] = (a << 24) | (r << 16) | (g << 8) | (b << 0);
 				} else {
-					pixels[x + (y * GLB.swid)] = 0xFF << 24;
+					pixels[i_index] = 0xFF << 24;
 				}
-				GLB.image[(4 * x) + (4 * y * GLB.swid) + 0] = 0;
-				GLB.image[(4 * x) + (4 * y * GLB.swid) + 1] = 0;
-				GLB.image[(4 * x) + (4 * y * GLB.swid) + 2] = 0;
-				GLB.image[(4 * x) + (4 * y * GLB.swid) + 3] = 0;
+				GLB.image[s_index + 0] = 0;
+				GLB.image[s_index + 1] = 0;
+				GLB.image[s_index + 2] = 0;
+				GLB.image[s_index + 3] = 0;
 			}
 		}
 		
